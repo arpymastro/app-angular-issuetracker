@@ -1,0 +1,43 @@
+{{issue[0].resolvedDate}}
+
+<div *ngIf="issue" class="card">
+  <div class="card-header">Edit Issue Details</div><br/>
+  <form #issueForm="ngForm" (ngSubmit)="editIssue(issueForm.value)">
+    <div class="form-group col-sm-7">
+      <label for="id">Issue Id</label>
+      <input id="id" name="id" [(ngModel)]="issue[0].id" class="form-control" placeholder="Issue Id" readonly/>
+    </div>
+    <div class="form-group col-sm-7">
+      <label for="description">Description</label>
+      <input id="description" name="description" [(ngModel)]="issue[0].description" class="form-control" placeholder="Issue Description"/>
+    </div>
+    <div class="form-group col-sm-7">
+      <label for="severity">Severity</label>
+      <select id="severity" name="severity" [(ngModel)]="issue[0].severity" class="form-control">
+        <option *ngFor="let severity of severities" [value]="severity">
+          {{severity}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-sm-7">
+      <label for="status">Status</label>
+      <select id="status" name="status" [(ngModel)]="issue[0].status" class="form-control">
+        <option *ngFor="let status of allStatus" [value]="status">
+          {{status}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-sm-7">
+      <label for="createdDate">Created Date</label>
+      <input id="createdDate" name="createdDate" [(ngModel)]="issue[0].createdDate" class="form-control" placeholder="Issue Created Date" readonly/>
+    </div>
+    <div class="form-group col-sm-7">
+      <label for="resolvedDate">Resolved Date</label>
+      <input id="resolvedDate" name="resolvedDate" [(ngModel)]="issue[0].resolvedDate" class="form-control" placeholder="not yet resolved" readonly/>
+    </div>    
+    &nbsp;&nbsp;<button type="submit" class="btn btn-warning">Save Changes</button>
+      &nbsp;&nbsp;
+      <button class="btn btn-success" (click)="goBack()">Go Back</button>
+  </form>
+  <br/>  
+</div>

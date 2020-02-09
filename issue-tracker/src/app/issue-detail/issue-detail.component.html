@@ -1,0 +1,15 @@
+<div *ngIf="issue" class="card">
+  <div class="card-header">Issue Details</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><b>Issue Id:</b> {{issue[0].id}}</li>
+    <li class="list-group-item"><b>Description:</b> {{issue[0].description}}</li>
+    <li class="list-group-item"><b>Severity:</b> {{issue[0].severity}}</li>
+    <li class="list-group-item"><b>Status:</b> {{issue[0].status}}</li>
+    <li class="list-group-item"><b>Created Date:</b> {{issue[0].createdDate}}</li>
+    <li class="list-group-item"><b>Resolved Date:</b> {{issue[0].resolvedDate}}</li>
+  </ul>
+</div>
+<br/>
+<div class="col-sm-4">
+  <button class="btn btn-success btn-small" (click)="goBack()">Go Back</button>
+</div>

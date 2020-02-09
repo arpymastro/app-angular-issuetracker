@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="form-group col-sm-4">
+    <label for="status">Status</label>
+    <select id="status" name="status" [(ngModel)]="status" (change)="statusChange($event.target.value)" class="form-control">
+      <option *ngFor="let status of allStatus" [value]="status">
+        {{status}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-sm-4">
+    <label for="severity">Severity</label>
+    <select id="severity" name="severity" [(ngModel)]="severity" (change)="severityChange($event.target.value)" class="form-control">
+      <option *ngFor="let severity of severities" [value]="severity">
+        {{severity}}
+      </option>
+    </select>
+  </div>
+  <div class="col-sm-4"><button class="btn btn-small btn-success float-right" routerLink="/add">Add New Issue</button></div>
+</div>
+
+<div class="row" style="margin-left:5%;">
+  <div style="margin-top:30px;width:90%">
+    <div class="table-resposive">
+      <table class="table">
+        <thead class="thead-warning">
+          <tr>
+            <th scope="col">Issue Id</th>
+            <th scope="col">Description</th>
+            <th scope="col">Severity</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let issue of issues">
+            <td>{{issue.id}}</td>
+            <td>{{issue.description}}</td>
+            <td>{{issue.severity}}</td>
+            <td>{{issue.status}}</td>
+            <td>
+              <button href="#" class="btn btn-small btn-primary" routerLink="/detail/{{issue.id}}">View</button>&nbsp;&nbsp;
+              <button href="#" class="btn btn-small btn-secondary" routerLink="/edit/{{issue.id}}">Edit</button>&nbsp;&nbsp;
+              <button href="#" class="btn btn-small btn-danger" (click)="deleteIssue(issue.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
